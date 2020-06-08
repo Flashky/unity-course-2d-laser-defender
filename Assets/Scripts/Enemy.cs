@@ -65,7 +65,7 @@ public class Enemy : MonoBehaviour
         {
             // Apply VFX here
             Destroy(gameObject);
-            Destroy(collision.gameObject);
+            damageDealer.Hit();
         }
     }
 }

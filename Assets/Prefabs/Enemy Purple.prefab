@@ -14,12 +14,12 @@ GameObject:
   - component: {fileID: 2567297641170174578}
   - component: {fileID: -901390258372356004}
   - component: {fileID: -2941583746374072552}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy Purple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2777462599150347509
 Transform:
@@ -162,12 +162,10 @@ MonoBehaviour:
   health: 100
   laserPrefab: {fileID: 4126381184281624085, guid: 0e696018f00d04b479967d38f84edd54,
     type: 3}
-  projectileFiringPeriod: 5
-  randomFireFactor: 0.5
   projectileSpeed: 10
   shotCounter: 0
   minTimeBetweenShots: 0.2
-  maxTimeBetweenShots: 3
+  maxTimeBetweenShots: 2
 --- !u!114 &-2941583746374072552
 MonoBehaviour:
   m_ObjectHideFlags: 0

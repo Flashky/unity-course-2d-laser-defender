@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private const String FIRE = "Fire1";
 
     // Configurable parameters
+    [SerializeField] float health = 100f;
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = 1f;
     [SerializeField] GameObject laserPrefab; // Prefabs can only be GameObjects
@@ -75,6 +76,26 @@ public class Player : MonoBehaviour
         var newPosY = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
 
         transform.position = new Vector2(newPosX, newPosY);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Player received hit!");
+        DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();
+
+        ProcessHit(collision, damageDealer);
+    }
+
+    private void ProcessHit(Collider2D collision, DamageDealer damageDealer)
+    {
+        health -= damageDealer.GetDamage();
+
+        if (health <= 0)
+        {
+            // Apply VFX here
+            Destroy(gameObject);
+            damageDealer.Hit();
+        }
     }
 
     private void SetUpMoveBoundaries()
