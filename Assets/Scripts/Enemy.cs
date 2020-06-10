@@ -25,17 +25,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3f;
 
-    // SFX 
-    AudioSource enemyAudio;
-
-
-
-
     // Start is called before the first frame update
     void Start()
     {
         shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
-        enemyAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -85,10 +78,13 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        // Sound FX
+        AudioSource.PlayClipAtPoint(explosionSound, Camera.main.transform.position, explosionVolume);
+
+        // Visual FX
         explosionVFX = Instantiate(explosionVFX, transform.position, transform.rotation);
         Destroy(explosionVFX, explosionTime);
-
-        AudioSource.PlayClipAtPoint(explosionSound, Camera.main.transform.position, explosionVolume);
+        
         Destroy(gameObject);
         
     }
