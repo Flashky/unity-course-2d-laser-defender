@@ -17,11 +17,25 @@ public class Player : MonoBehaviour
 
     // Configurable parameters
     [SerializeField] float health = 100f;
-    [SerializeField] float moveSpeed = 10f;
-    [SerializeField] float padding = 1f;
+
+    // Explosion
+    [Header("Explosion")]
+    [SerializeField] GameObject explosionVFX;
+    [SerializeField] float explosionTime = 5f;
+    [SerializeField] AudioClip explosionSound;
+    [SerializeField] [Range(0, 1)] float explosionVolume = 0.1f;
+
+    // Laser
     [SerializeField] GameObject laserPrefab; // Prefabs can only be GameObjects
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float projectileFiringPeriod = 1f;
+    [SerializeField] AudioClip laserSound;
+    [SerializeField] [Range(0, 1)] float laserVolume = 0.2f;
+
+    // Movement
+    [SerializeField] float moveSpeed = 10f;
+    [SerializeField] float padding = 1f;
+    
 
     // Boundaries
     private float xMin;
@@ -59,7 +73,10 @@ public class Player : MonoBehaviour
 
     private IEnumerator FireContinuously()
     {
-        while(true) { 
+        while(true) {
+            // Sound FX
+            AudioSource.PlayClipAtPoint(laserSound, Camera.main.transform.position, laserVolume);
+
             GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity); // Quaternion.identity means 'no rotation applied'
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
             yield return new WaitForSeconds(projectileFiringPeriod);
@@ -80,7 +97,6 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Player received hit!");
         DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();
 
         ProcessHit(collision, damageDealer);
@@ -89,13 +105,24 @@ public class Player : MonoBehaviour
     private void ProcessHit(Collider2D collision, DamageDealer damageDealer)
     {
         health -= damageDealer.GetDamage();
+        damageDealer.Hit();
 
         if (health <= 0)
         {
-            // Apply VFX here
-            Destroy(gameObject);
-            damageDealer.Hit();
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        // Sound FX
+        AudioSource.PlayClipAtPoint(explosionSound, Camera.main.transform.position, explosionVolume);
+
+        // Visual FX
+        explosionVFX = Instantiate(explosionVFX, transform.position, transform.rotation);
+        Destroy(explosionVFX, explosionTime);
+
+        Destroy(gameObject);
     }
 
     private void SetUpMoveBoundaries()
