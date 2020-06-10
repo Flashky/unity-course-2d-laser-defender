@@ -10,12 +10,14 @@ public class Enemy : MonoBehaviour
     [SerializeField] float health = 100f;
 
     // Explosion
+    [Header("Explosion")]
     [SerializeField] GameObject explosionVFX;
     [SerializeField] float explosionTime = 5f;
     [SerializeField] AudioClip explosionSound;
     [SerializeField] [Range(0,1)] float explosionVolume = 0.1f;
 
     // Laser
+    [Header("Projectile")]
     [SerializeField] GameObject laserPrefab; // Prefabs can only be GameObjects
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] AudioClip laserSound;
