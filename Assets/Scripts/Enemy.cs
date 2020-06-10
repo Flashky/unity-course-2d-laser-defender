@@ -63,18 +63,18 @@ public class Enemy : MonoBehaviour
     private void ProcessHit(Collider2D collision, DamageDealer damageDealer)
     {
         health -= damageDealer.GetDamage();
+        damageDealer.Hit();
 
         if (health <= 0)
         {
-            Explosion();
-            Destroy(gameObject);
-            damageDealer.Hit();
+            Die();
         }
     }
 
-    private void Explosion()
+    private void Die()
     {
         explosionVFX = Instantiate(explosionVFX, transform.position, transform.rotation);
         Destroy(explosionVFX, explosionTime);
+        Destroy(gameObject);
     }
 }
