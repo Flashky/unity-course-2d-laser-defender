@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     [SerializeField] [Range(0, 1)] float explosionVolume = 0.1f;
 
     // Laser
+    [Header("Projectile")]
     [SerializeField] GameObject laserPrefab; // Prefabs can only be GameObjects
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float projectileFiringPeriod = 1f;
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour
     [SerializeField] [Range(0, 1)] float laserVolume = 0.2f;
 
     // Movement
+    [Header("Movement")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = 1f;
     
