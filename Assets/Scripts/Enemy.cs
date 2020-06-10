@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
     private void Fire()
     {
         // Sound FX
-        enemyAudio.PlayOneShot(laserSound);
+        AudioSource.PlayClipAtPoint(laserSound, Camera.main.transform.position, laserVolume);
 
         // Create laser and apply velocity
         GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity); // Quaternion.identity means 'no rotation applied'
@@ -85,10 +85,6 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-
-
-        //Destroy(audio, 5f);
-
         explosionVFX = Instantiate(explosionVFX, transform.position, transform.rotation);
         Destroy(explosionVFX, explosionTime);
 
