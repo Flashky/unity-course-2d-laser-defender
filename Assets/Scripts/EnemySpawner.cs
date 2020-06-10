@@ -33,8 +33,6 @@ public class EnemySpawner : MonoBehaviour
     {
         for(int enemyCount = 0; enemyCount  < waveConfig.GetNumberOfEnemies(); enemyCount++)
         {
-            Debug.Log("spawning enemy  " + enemyCount);
-           
             // Spawn an enemy
             SpawnEnemy(waveConfig);
 

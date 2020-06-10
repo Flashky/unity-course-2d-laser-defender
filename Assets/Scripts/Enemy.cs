@@ -9,22 +9,33 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float health = 100f;
 
+    // Explosion
     [SerializeField] GameObject explosionVFX;
-    [SerializeField] float explosionTime = 1f;
+    [SerializeField] float explosionTime = 5f;
+    [SerializeField] AudioClip explosionSound;
+    [SerializeField] [Range(0,1)] float explosionVolume = 0.1f;
 
+    // Laser
     [SerializeField] GameObject laserPrefab; // Prefabs can only be GameObjects
     [SerializeField] float projectileSpeed = 10f;
+    [SerializeField] AudioClip laserSound;
+    [SerializeField] [Range(0, 1)] float laserVolume = 0.2f;
 
     [SerializeField] float shotCounter;
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3f;
-    
-    float cooldown = 0f;
+
+    // SFX 
+    AudioSource enemyAudio;
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+        enemyAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -45,7 +56,8 @@ public class Enemy : MonoBehaviour
 
     private void Fire()
     {
-        // Apply cooldown
+        // Sound FX
+        enemyAudio.PlayOneShot(laserSound);
 
         // Create laser and apply velocity
         GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity); // Quaternion.identity means 'no rotation applied'
@@ -73,8 +85,15 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+
+
+        //Destroy(audio, 5f);
+
         explosionVFX = Instantiate(explosionVFX, transform.position, transform.rotation);
         Destroy(explosionVFX, explosionTime);
+
+        AudioSource.PlayClipAtPoint(explosionSound, Camera.main.transform.position, explosionVolume);
         Destroy(gameObject);
+        
     }
 }
