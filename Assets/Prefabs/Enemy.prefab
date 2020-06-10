@@ -98,6 +98,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  explosionVFX: {fileID: 1540985587248173760, guid: 43983a810dfbe0c449b41dcb35f0e0a8,
+    type: 3}
+  explosionTime: 1
   laserPrefab: {fileID: 4126381184281624085, guid: 0e696018f00d04b479967d38f84edd54,
     type: 3}
   projectileSpeed: 10

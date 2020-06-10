@@ -9,6 +9,9 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float health = 100f;
 
+    [SerializeField] GameObject explosionVFX;
+    [SerializeField] float explosionTime = 1f;
+
     [SerializeField] GameObject laserPrefab; // Prefabs can only be GameObjects
     [SerializeField] float projectileSpeed = 10f;
 
@@ -63,9 +66,15 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            // Apply VFX here
+            Explosion();
             Destroy(gameObject);
             damageDealer.Hit();
         }
+    }
+
+    private void Explosion()
+    {
+        explosionVFX = Instantiate(explosionVFX, transform.position, transform.rotation);
+        Destroy(explosionVFX, explosionTime);
     }
 }
