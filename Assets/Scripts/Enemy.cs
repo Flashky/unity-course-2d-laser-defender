@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float health = 100f;
+    [SerializeField] int score = 100;
 
     // Explosion
     [Header("Explosion")]
@@ -74,8 +75,14 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
+            IncreaseScore();
             Die();
         }
+    }
+
+    private void IncreaseScore()
+    {
+        FindObjectOfType<ScoreBoard>().IncreaseScore(score);
     }
 
     private void Die()
