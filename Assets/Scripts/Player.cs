@@ -125,6 +125,9 @@ public class Player : MonoBehaviour
         Destroy(explosionVFX, explosionTime);
 
         Destroy(gameObject);
+
+        // Maybe add som kind of delay to finish all sounds or animations would be great.
+        FindObjectOfType<Level>().LoadGameOver();
     }
 
     private void SetUpMoveBoundaries()
