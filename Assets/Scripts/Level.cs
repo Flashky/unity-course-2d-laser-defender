@@ -9,6 +9,7 @@ public class Level : MonoBehaviour
     private const string GAME_SCENE = "Game";
     private const string GAME_OVER_SCENE = "Game Over";
 
+    [SerializeField] float gameOverLoadDelay = 1f;
 
     public void LoadStartMenu()
     {
@@ -22,9 +23,14 @@ public class Level : MonoBehaviour
 
     public void LoadGameOver()
     {
-        SceneManager.LoadScene(GAME_OVER_SCENE);
+        StartCoroutine(WaitAndLoad());
     }
 
+    private IEnumerator WaitAndLoad()
+    {
+        yield return new WaitForSeconds(gameOverLoadDelay);
+        SceneManager.LoadScene(GAME_OVER_SCENE);
+    }
 
     public void QuitGame()
     {

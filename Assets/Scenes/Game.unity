@@ -388,6 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f17c0397cb2c0145a0fdefdbfc1f1ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverLoadDelay: 2
 --- !u!1 &2008182536 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 827106628068000824, guid: 4e6189fb878963b43bda1a8ffe04ad03,
@@ -502,6 +503,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 827106628068000827, guid: 4e6189fb878963b43bda1a8ffe04ad03,
+        type: 3}
+      propertyPath: explosionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c5c49dc469e7ca14eb898bd765598c92, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e6189fb878963b43bda1a8ffe04ad03, type: 3}
 --- !u!1001 &1550621181318017200
