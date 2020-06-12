@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
 
     private void IncreaseScore()
     {
-        FindObjectOfType<ScoreBoard>().IncreaseScore(score);
+        FindObjectOfType<GameSession>().IncreaseScore(score);
     }
 
     private void Die()

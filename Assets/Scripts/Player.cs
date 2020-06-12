@@ -124,9 +124,6 @@ public class Player : MonoBehaviour
         explosionVFX = Instantiate(explosionVFX, transform.position, transform.rotation);
         Destroy(explosionVFX, explosionTime);
 
-
-
-        // Maybe add som kind of delay to finish all sounds or animations would be great.
         FindObjectOfType<Level>().LoadGameOver();
         Destroy(gameObject);
     }
