@@ -128,6 +128,11 @@ public class Player : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public float GetHealth()
+    {
+        return health;
+    }
+
     private void SetUpMoveBoundaries()
     {
         Camera gameCamera = Camera.main;

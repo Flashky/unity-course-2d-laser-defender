@@ -13,7 +13,7 @@ public class GameSession : SingletonMonoBehaviour
 
     public void ResetGame()
     {
-        this.score = 0;
+        Destroy(gameObject);
     }
 
     public int GetScore()
