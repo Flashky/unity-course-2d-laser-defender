@@ -26,7 +26,6 @@ public class EnemyPathing : MonoBehaviour
     void Update()
     {
         Move();
-
     }
 
     public void SetWaveConfig(WaveConfig waveConfig)
@@ -52,7 +51,7 @@ public class EnemyPathing : MonoBehaviour
         var movementThisFrame = waveConfig.GetMoveSpeed() * Time.deltaTime;
 
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
-
+        
         float distance = Vector2.Distance(targetPosition, transform.position);
 
         if (transform.position == targetPosition)

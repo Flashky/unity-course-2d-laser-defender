@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] AudioClip laserSound;
     [SerializeField] [Range(0, 1)] float laserVolume = 0.2f;
 
-    [SerializeField] float shotCounter;
+    float shotCounter;
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3f;
 

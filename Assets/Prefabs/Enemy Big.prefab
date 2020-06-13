@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1579373457}
   - component: {fileID: 1579373458}
   m_Layer: 10
-  m_Name: Enemy
+  m_Name: Enemy Big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7f3e1a298484eb7428a842aca8fa5313, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01c028a355e68e3429a6bfffeff1403b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,20 +97,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ad2ff4b6c5d5944a9403ce09c854b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  score: 100
+  health: 500
+  score: 600
   explosionVFX: {fileID: 1540985587248173760, guid: 43983a810dfbe0c449b41dcb35f0e0a8,
     type: 3}
   explosionTime: 1
   explosionSound: {fileID: 8300000, guid: e980b16b310fa164b971291c5c709230, type: 3}
   explosionVolume: 1
-  laserPrefab: {fileID: 4126381184281624085, guid: 0e696018f00d04b479967d38f84edd54,
+  laserPrefab: {fileID: 4126381184281624085, guid: 5796fe8414e0d814fa451b5e08a8d3d0,
     type: 3}
-  projectileSpeed: 10
+  projectileSpeed: 2.5
   laserSound: {fileID: 8300000, guid: 4cd0c7e72820cac47b9187c60d9323f4, type: 3}
-  laserVolume: 0.5
+  laserVolume: 0.1
   shotCounter: 0
-  minTimeBetweenShots: 0.5
+  minTimeBetweenShots: 1
   maxTimeBetweenShots: 2
 --- !u!114 &-9186831718064552644
 MonoBehaviour:
@@ -162,7 +162,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.93, y: 0.84}
+    oldSize: {x: 1.515625, y: 1.3125}
     newSize: {x: 0.93, y: 0.84}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
