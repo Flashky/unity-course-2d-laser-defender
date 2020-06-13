@@ -11,6 +11,7 @@ public class Spinner : MonoBehaviour
     void Update()
     {
         transform.Rotate(0,0, rotationSpeed * Time.deltaTime); // Framerate independant
+        transform.Rotate()
     }
 
 }
